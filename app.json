@@ -1,0 +1,21 @@
+{
+    "name": "Welcome Home Demo",
+    "description": "Integrate with MailChimp for sending welcome pack to new customers",
+    "image": "heroku/python",
+    "repository": "https://github.com/gentrack/platform-demo-welcome-home.git",
+    "keywords": ["python", "django", "example-app"],
+    "env": {
+        "MAILCHIMP_API_KEY": {
+            "description": "MailChimp API Key"
+        },
+        "MAILCHIMP_LIST_NAME": {
+            "description": "Name for the list we will create in MailChimp"
+        },
+        "APP_PUB_KEY": {
+            "description": "Gentrack Platform application public key"
+        }
+    },
+    "scripts": {
+        "postdeploy": "bash postdeploy.sh"
+    }
+}
