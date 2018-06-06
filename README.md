@@ -29,7 +29,7 @@ You will need to have:
 Before you deploy the integration you will need an API key for MailChimp to pre-configure and push events to its API. You will also need the public key of your Gentrack Platform app definition to verify that received events are valid.
 
 1. Sign in to [MailChimp](https://admin.mailchimp.com/)
-2. Navigate to your account profile, locate the [API keys](https://admin.mailchimp.com/account/api/) section, and generate a new API key - save it for later
+2. Navigate to your account, locate the [API keys](https://admin.mailchimp.com/account/api/) in the Extras section, and generate a new API key - save it for later
 3. Sign in to the [Gentrack Platform Developer Portal](https://portal.gentrack.io/)
 4. Add a new app using your non-production tenant
 5. Open the app settings and copy the public key - save it for later
@@ -74,7 +74,7 @@ Now that the integration is setup, it is time to wire up an automated campaign w
 As we are simulating an external dataset that might come from a CRM you will need to add a record that will match with the test event you will send:
 
 1. Sign in to the integration console (you can find it at `https://(your-app-name).herokuapp.com/admin`) using the username `admin` and password `integrations-are-fun!`.
-2. In the __Welcome Pack Orchestration__ section click **Add**
+2. In the __Welcome Pack Orchestration__ section click **Add** next to **Customers**
 3. On the __Add customer__ page provide then click **Save**:
     * Account ID - provide a value that you will use in the test event (e.g. 12345678)
     * First Name - provide a value that will be used as the customer's first name
