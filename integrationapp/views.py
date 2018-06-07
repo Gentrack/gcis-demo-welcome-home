@@ -142,18 +142,21 @@ def map_to_merge_fields(customer, json_req):
 
         merge_fields[pre + 'ENDS'] = service['tariff']['tariffEnds']
         merge_fields[pre + 'UNTIL'] = service['tariff']['fixedUntil']
-        merge_fields[pre + 'EXIT'] = '{}{}'.format(curr_symbol, service['tariff']['exitFees'])
+        exitFees = service['tariff']['exitFees']
+        merge_fields[pre + 'EXIT'] = ', '.join(exitFees)
 
         discounts = service['tariff']['discounts']
         additional_charges = service['tariff']['additionalCharges']
         disc_and_additional = discounts + additional_charges
-        merge_fields[pre + 'DISC'] = ','.join(disc_and_additional)
+        merge_fields[pre + 'DISC'] = ', '.join(disc_and_additional)
 
         addons = service['tariff']['addons']
-        merge_fields[pre + 'ADD'] = ','.join(addons)
+        merge_fields[pre + 'ADD'] = ', '.join(addons)
 
         comparison_rate = service['tariff']['annualEstimate']['comparisonRate']
         merge_fields[pre + 'COMPARE'] = '{} {}/kWh'.format(comparison_rate, rate_symbol)
+
+        merge_fields[pre + 'EAC'] = '{} kWh'.format(service['tariff']['annualEstimate']['usage'])
 
         if t1:
             # T1 and T2 both have taxRate, just use T1 for now
