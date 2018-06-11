@@ -67,7 +67,6 @@ def get_merge_fields():
     merge_dict['T1_EXIT'] = ('Tariff 1 - Exit Fees', 'text', '')
     merge_dict['T1_DISC'] = ('Tariff 1 - Discounts', 'text', '')
     merge_dict['T1_ADD'] = ('Tariff 1 - Additional', 'text', '')
-    merge_dict['T1_COMPARE'] = ('Tariff 1 - Comparison', 'text', '15.22 p/kWh')
     merge_dict['T2_SERVICE'] = ('Tariff 2 - Service', 'text', 'Gas')
     merge_dict['T2_NAME'] = ('Tariff 2 - Name', 'text', 'Gas Home')
     merge_dict['T2_TYPE'] = ('Tariff 2 - Type', 'text', 'Fixed Rate')
@@ -79,8 +78,6 @@ def get_merge_fields():
     merge_dict['T2_EXIT'] = ('Tariff 2 - Exit Fees', 'text', '')
     merge_dict['T2_DISC'] = ('Tariff 2 - Discounts', 'text', '')
     merge_dict['T2_ADD'] = ('Tariff 2 - Additional', 'text', '')
-    merge_dict['T2_COMPARE'] = ('Tariff 2 - Comparison', 'text', '12.45 p/kWh')
-    merge_dict['TAXRATE'] = ('Tax Rate', 'text', '5%')
 
     return merge_dict
 

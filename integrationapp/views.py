@@ -153,14 +153,7 @@ def map_to_merge_fields(customer, json_req):
         addons = service['tariff']['addons']
         merge_fields[pre + 'ADD'] = ', '.join(addons)
 
-        comparison_rate = service['tariff']['annualEstimate']['comparisonRate']
-        merge_fields[pre + 'COMPARE'] = '{} {}/kWh'.format(comparison_rate, rate_symbol)
-
         merge_fields[pre + 'EAC'] = '{} kWh'.format(service['tariff']['annualEstimate']['usage'])
-
-        if t1:
-            # T1 and T2 both have taxRate, just use T1 for now
-            merge_fields['TAXRATE'] = '{}%'.format(service['tariff']['taxRate'])
 
     print 'Merge fields constructed'
     return merge_fields
