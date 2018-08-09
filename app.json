@@ -2,7 +2,7 @@
     "name": "Welcome Home Demo",
     "description": "Integrate with MailChimp for sending welcome pack to new customers",
     "image": "heroku/python",
-    "repository": "https://github.com/gentrack/platform-demo-welcome-home.git",
+    "repository": "https://github.com/Gentrack/gcis-demo-welcome-home.git",
     "keywords": ["python", "django", "example-app"],
     "env": {
         "MAILCHIMP_API_KEY": {
