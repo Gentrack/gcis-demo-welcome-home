@@ -40,7 +40,7 @@ It is time to deploy the integration. This will setup an app in Heroku to connec
 
 1. Click the **Deploy to Heroku** button to create a new instance of this sample integration:
 
-    [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/gentrack/platform-demo-welcome-home)
+    [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/Gentrack/gcis-demo-welcome-home)
 2. On the __Create New App__ populate the following values then click **Deploy app**
     * App name - provide a value, or leave it blank to let Heroku generate a value
     * Region - chooses a region that suits you
