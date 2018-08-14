@@ -4,13 +4,13 @@ Positive customer experience in onboarding reflects on your brand and can drive 
 
 ![Sample Email](sample-email.png)
 
-In this demo we connect the Gentrack Platform to an integration layer, represented by Heroku. This layer extracts a bit of extra data that might typically reside in a CRM, and sends the combined set to Mailchimp to trigger the automation pathway. The process flows as follows:
+In this demo we connect the Gentrack Cloud Integration Services (GCIS) to an integration layer, represented by Heroku. This layer extracts a bit of extra data that might typically reside in a CRM, and sends the combined set to Mailchimp to trigger the automation pathway. The process flows as follows:
 
 ![Flow](flow.png)
 
 1. Deploy an integration to orchestrate the customer welcome message workflow
-2. Subscribe to event(s) via the Gentrack Platform Developer Portal to be received by your integration layer
-3. Gentrack Platform picks up the event and packages it up to send to your integration layer via a webhook
+2. Subscribe to event(s) via the GCIS Developer Portal to be received by your integration layer
+3. GCIS picks up the event and packages it up to send to your integration layer via a webhook
 4. Your integration layer enriches the event with other information from around your organization then sends it to the marketing automation tool
 5. Your marketing automation tool initiates the welcome pack communications journey
 
@@ -20,23 +20,23 @@ As you think about your production deployment you might choose other methods for
 
 You will need to have:
 
-* [Gentrack Platform Developer Portal](https://portal.gentrack.io) Account - contact your organization administrator to get an invite, or your account manager to enroll your organization
+* [GCIS Developer Portal](https://portal.gentrack.io) Account - contact your organization administrator to get an invite, or your account manager to enroll your organization
 * [MailChimp](https://mailchimp.com/) Account
 * [Heroku](https://www.heroku.com/) Account
 
-## Obtain MailChimp API key and Gentrack Platform app public key
+## Obtain MailChimp API key and GCIS app public key
 
-Before you deploy the integration you will need an API key for MailChimp to pre-configure and push events to its API. You will also need the public key of your Gentrack Platform app definition to verify that received events are valid.
+Before you deploy the integration you will need an API key for MailChimp to pre-configure and push events to its API. You will also need the public key of your GCIS app definition to verify that received events are valid.
 
 1. Sign in to [MailChimp](https://admin.mailchimp.com/)
 2. Navigate to your account, locate the [API keys](https://admin.mailchimp.com/account/api/) in the Extras section, and generate a new API key - save it for later
-3. Sign in to the [Gentrack Platform Developer Portal](https://portal.gentrack.io/)
+3. Sign in to the [GCIS Developer Portal](https://portal.gentrack.io/)
 4. Add a new app using your non-production tenant
 5. Open the app settings and copy the public key - save it for later
 
 ## Deploy the sample integration on Heroku
 
-It is time to deploy the integration. This will setup an app in Heroku to connect MailChimp and Gentrack Platform, and create a new MailChimp list to receive new customers.
+It is time to deploy the integration. This will setup an app in Heroku to connect MailChimp and GCIS, and create a new MailChimp list to receive new customers.
 
 1. Click the **Deploy to Heroku** button to create a new instance of this sample integration:
 
@@ -46,7 +46,7 @@ It is time to deploy the integration. This will setup an app in Heroku to connec
     * Region - chooses a region that suits you
     * MAILCHIMP_API_KEY - paste the MailChimp API key you obtained earlier
     * MAILCHIMP_LIST_NAME - provide a name for a new list in MailChimp which we will create for the integration (e.g. "Energise Me"), be aware this is also used as the organization name in the starter email template.
-    * APP_PUB_KEY - paste the Platform public key you obtained earlier
+    * APP_PUB_KEY - paste the GCIS public key you obtained earlier
 
 Once the application is deployed you will be able to access the integration console at `https://(your-app-name).herokuapp.com/admin`.
 
@@ -85,9 +85,9 @@ You can add as many entires as needed.
 
 ## Subscribe to the welcome event and send a test event
 
-Now that the integration layer and MailChimp are configured, it is time to connect the app you created earlier in the Gentrack Platform Developer Portal to the integration layer and send a test event:
+Now that the integration layer and MailChimp are configured, it is time to connect the app you created earlier in the GCIS Developer Portal to the integration layer and send a test event:
 
-1. Sign in to the [Gentrack Platform Developer Portal](https://portal.gentrack.io/)
+1. Sign in to the [GCIS Developer Portal](https://portal.gentrack.io/)
 2. Open the app settings for the app you created earlier
 3. Under __App Settings__ click **Event Subscriptions**
 4. On the __Event Subscriptions__ page click **Edit**
@@ -105,4 +105,4 @@ Make sure to clean up after you are done experimenting with the sample, otherwis
 
 * In MailChimp you can delete the campaign, list, and template
 * In Heroku you can delete the application
-* In Gentrack Platform you can delete the application
+* In GCIS you can delete the application
