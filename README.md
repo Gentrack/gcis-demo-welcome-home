@@ -20,7 +20,7 @@ As you think about your production deployment you might choose other methods for
 
 You will need to have:
 
-* [GCIS Developer Portal](https://portal.gentrack.io) Account - contact your organization administrator to get an invite, or your account manager to enroll your organization
+* [GCIS Developer Portal](https://portal.integration.gentrack.cloud/) Account - contact your organization administrator to get an invite, or your account manager to enroll your organization
 * [MailChimp](https://mailchimp.com/) Account
 * [Heroku](https://www.heroku.com/) Account
 
@@ -30,7 +30,7 @@ Before you deploy the integration you will need an API key for MailChimp to pre-
 
 1. Sign in to [MailChimp](https://admin.mailchimp.com/)
 2. Navigate to your account, locate the [API keys](https://admin.mailchimp.com/account/api/) in the Extras section, and generate a new API key - save it for later
-3. Sign in to the [GCIS Developer Portal](https://portal.gentrack.io/)
+3. Sign in to the [GCIS Developer Portal](https://portal.integration.gentrack.cloud/)
 4. Add a new app using your non-production tenant
 5. Open the app settings and copy the public key - save it for later
 
@@ -87,7 +87,7 @@ You can add as many entires as needed.
 
 Now that the integration layer and MailChimp are configured, it is time to connect the app you created earlier in the GCIS Developer Portal to the integration layer and send a test event:
 
-1. Sign in to the [GCIS Developer Portal](https://portal.gentrack.io/)
+1. Sign in to the [GCIS Developer Portal](https://portal.integration.gentrack.cloud/)
 2. Open the app settings for the app you created earlier
 3. Under __App Settings__ click **Event Subscriptions**
 4. On the __Event Subscriptions__ page click **Edit**
