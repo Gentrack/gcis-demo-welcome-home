@@ -38,15 +38,15 @@ Before you deploy the integration you will need an API key for MailChimp to pre-
 
 It is time to deploy the integration. This will setup an app in Heroku to connect MailChimp and GCIS, and create a new MailChimp list to receive new customers.
 
-1. Click the **Deploy to Heroku** button to create a new instance of this sample integration:
+1. Click on the **Deploy to Heroku** button below, to create a new instance of this sample integration:
 
     [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/Gentrack/gcis-demo-welcome-home)
 2. On the __Create New App__ populate the following values then click **Deploy app**
     * App name - provide a value, or leave it blank to let Heroku generate a value
     * Region - chooses a region that suits you
+    * APP_PUB_KEY - paste the GCIS public key you obtained earlier
     * MAILCHIMP_API_KEY - paste the MailChimp API key you obtained earlier
     * MAILCHIMP_LIST_NAME - provide a name for a new list in MailChimp which we will create for the integration (e.g. "Energise Me"), be aware this is also used as the organization name in the starter email template.
-    * APP_PUB_KEY - paste the GCIS public key you obtained earlier
 
 Once the application is deployed you will be able to access the integration console at `https://(your-app-name).herokuapp.com/admin`.
 
@@ -55,17 +55,18 @@ Once the application is deployed you will be able to access the integration cons
 Now that the integration is setup, it is time to wire up an automated campaign which is triggered with each new entry to a list. We will use a pre-created "Welcome Pack" email template which has the merge fields pre-populated:
 
 1. [Click to import our starter "Welcome Pack" email template](https://admin.mailchimp.com/templates/share?id=90164641_cdfd77dd092f71ce6ef6_us17)
-2. Create a new campaign using the **Welcome new subscribers** blueprint using the list you specified during the integration setup
-3. Once the campaign is created, in the setup wizard click **Edit trigger**
-4. On the __Edit trigger__ page set **Delay** to **immediately**, then click **Update Trigger** to return to the setup wizard
-5. On the setup wizard, click **Edit Workflow Settings**
-6. On the __Workflow configuration__ page set the **From name** and **From email address** to a valid value then click **Update settings**
-7. On the setup wizard, step click **Design Email**
-8. On the __Email information__ page click **Next**
-9. On the __Select a template__ page under __Saved templates__ select the **Welcome Pack** template
-10. On the message design screen review the design, then click **Save and Continue** to return to the setup wizard
-11. At the bottom of the setup wizard, click **Next**
-12. On the __Review your workflow__ page ensure there are no issues, then click **Start Workflow**
+2. Create a new campaign
+3. In the **Search our available campaign types** box enter **Welcome new subscribers** and select the list you specified during the integration setup
+4. Once the campaign is created, in the middle of the screen, next to **Trigger**, click on **Edit**
+5. On the **Edit Trigger** page set **Delay** to **immediately**, then click **Update Trigger** to return to the setup wizard
+6. On the setup wizard, click **Edit Workflow Settings**
+7. On the **Workflow configuration** page set the **From name** and **From email address** to valid values then click **Update settings**
+8. On the setup wizard, step click **Design Email**
+9. On the **Email information** page set the **From name** and **From email address** to valid values and click **Next**
+10. On the **Select a template** page under **Saved templates** select the **Welcome Pack** template
+11. On the message design screen review the design, then click **Save and Continue** to return to the setup wizard
+12. At the bottom of the setup wizard, click **Next**
+13. On the **Review your workflow** page ensure there are no issues, then click **Start Sending**
 
 **NOTE**: To preserve the drag-and-drop capability of email templates, you need to import templates using the share template functionality. MailChimp has an HTML import API but it appears to disable the use of the visual editor at the time of this writing.
 
@@ -73,9 +74,10 @@ Now that the integration is setup, it is time to wire up an automated campaign w
 
 As we are simulating an external dataset that might come from a CRM you will need to add a record that will match with the test event you will send:
 
-1. Sign in to the integration console (you can find it at `https://(your-app-name).herokuapp.com/admin`) using the username `admin` and password `integrations-are-fun!`.
-2. In the __Welcome Pack Orchestration__ section click **Add** next to **Customers**
-3. On the __Add customer__ page provide then click **Save**:
+1. Sign in to the integration console (you can find it at `https://(your-app-name).herokuapp.com/admin`) 
+    *  Username = `admin` and Password = `integrations-are-fun!`
+2. Under the section **Welcome Pack Orchestration** section, next to **Customers** click on **Add**
+3. On the **Add customer** page provide the following and then click **Save**:
     * Account ID - provide a value that you will use in the test event (e.g. 12345678)
     * First Name - provide a value that will be used as the customer's first name
     * Last Name - provide a value that will be used as the customer's last name
@@ -88,14 +90,14 @@ You can add as many entires as needed.
 Now that the integration layer and MailChimp are configured, it is time to connect the app you created earlier in the GCIS Developer Portal to the integration layer and send a test event:
 
 1. Sign in to the [GCIS Developer Portal](https://portal.integration.gentrack.cloud/)
-2. Open the app settings for the app you created earlier
-3. Under __App Settings__ click **Event Subscriptions**
-4. On the __Event Subscriptions__ page click **Edit**
-5. In the __Edit Events__ dialog provide the following then click **Save**:
+2. Under **Domain White List** click on **Add Domain** and enter your domain, example:  `(your-app-name).herokuapp.com`
+3. Under **My Apps** click on your app
+4. Under **App Settings** click on **Event Subscriptions**
+5. On the **Event Subscriptions** page click **Edit**, complete the following, then click **Save**:
     * URL of your End Point: `https://(your-app-name).herokuapp.com/webhook/`
     * Select the **customer-welcome** event
 6. Once the event is subscribed, click the **Send Test Event** button
-7. In the __Send Test Event__ dialog set the Account ID to the value you setup in the integration console earlier, then click **Send**
+7. In the **Send Test Event** dialog set the Account ID to the value you setup in the integration console earlier, then click **Send**
 
 In a few moments you should receive your sample welcome pack!
 
