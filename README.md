@@ -61,7 +61,7 @@ Now that the integration is setup, it is time to wire up an automated campaign w
 5. On the **Edit Trigger** page set **Delay** to **immediately**, then click **Update Trigger** to return to the setup wizard
 6. On the setup wizard, click **Edit Workflow Settings**
 7. On the **Workflow configuration** page set the **From name** and **From email address** to valid values then click **Update settings**
-8. On the setup wizard, step click **Design Email**
+8. On the setup wizard step, click **Design Email**
 9. On the **Email information** page set the **From name** and **From email address** to valid values and click **Next**
 10. On the **Select a template** page under **Saved templates** select the **Welcome Pack** template
 11. On the message design screen review the design, then click **Save and Continue** to return to the setup wizard
