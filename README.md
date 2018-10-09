@@ -20,7 +20,10 @@ As you think about your production deployment you might choose other methods for
 
 You will need an account for the following:
 
-* [GCIS Developer Portal](https://portal.integration.gentrack.cloud/) - contact your organization administrator to get an invite, or your account manager to enroll your organization
+* [GCIS Developer Portal](https://portal.integration.gentrack.cloud/) 
+    - contact your organization administrator to get an invite, 
+    - or your account manager to enroll your organization
+    - and to create a "Test" Tenant for the demo.
 * [MailChimp](https://mailchimp.com/)
 * [Heroku](https://www.heroku.com/)
 
