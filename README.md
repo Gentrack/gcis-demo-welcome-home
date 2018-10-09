@@ -65,6 +65,7 @@ As we are simulating an external dataset that might come from a CRM you will nee
    * Last Name     - provide a value that will be used as the customer's last name
    * Email Address - provide a value that will receive the email
 6.  Click on **Save** 
+
     **NOTE:**  You can add as many entires as needed.
 
 ## Configure the MailChimp campaign
