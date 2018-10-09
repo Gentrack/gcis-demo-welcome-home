@@ -18,21 +18,27 @@ As you think about your production deployment you might choose other methods for
 
 ## Before you begin
 
-You will need to have:
+You will need an account for the following:
 
-* [GCIS Developer Portal](https://portal.integration.gentrack.cloud/) Account - contact your organization administrator to get an invite, or your account manager to enroll your organization
-* [MailChimp](https://mailchimp.com/) Account
-* [Heroku](https://www.heroku.com/) Account
+* [GCIS Developer Portal](https://portal.integration.gentrack.cloud/) 
+    - contact your organization administrator to get an invite, 
+    - or your account manager to enroll your organization
+    - and to create a "Test" Tenant for the demo.
+* [MailChimp](https://mailchimp.com/)
+* [Heroku](https://www.heroku.com/)
 
 ## Obtain MailChimp API key and GCIS app public key
 
 Before you deploy the integration you will need an API key for MailChimp to pre-configure and push events to its API. You will also need the public key of your GCIS app definition to verify that received events are valid.
 
 1. Sign in to [MailChimp](https://admin.mailchimp.com/)
-2. Navigate to your account, locate the [API keys](https://admin.mailchimp.com/account/api/) in the Extras section, and generate a new API key - save it for later
-3. Sign in to the [GCIS Developer Portal](https://portal.integration.gentrack.cloud/)
-4. Add a new app using your non-production tenant
-5. Open the app settings and copy the public key - save it for later
+2. Right at the top, click on the "˅" next to your name
+3. Naviagate to "Account" and then to "Extras" and locate the [API keys](https://admin.mailchimp.com/account/api/)
+4. Create a new API key - save it for later
+5. Sign in to the [GCIS Developer Portal](https://portal.integration.gentrack.cloud/)
+6. Go to Tenants and find a tenant that is flagged as "Test"
+7. Add a new app and select the "Test" tenant
+8. Open the new app you've created and click on the "Copy to clipboard" button to copy the public key
 
 ## Deploy the sample integration on Heroku
 
@@ -41,14 +47,29 @@ It is time to deploy the integration. This will setup an app in Heroku to connec
 1. Click on the **Deploy to Heroku** button below, to create a new instance of this sample integration:
 
     [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/Gentrack/gcis-demo-welcome-home)
-2. On the __Create New App__ populate the following values then click **Deploy app**
-    * App name - provide a value, or leave it blank to let Heroku generate a value
+2. On the __Create New App__ page, populate the following values:
+    * App name - enter a name for your Heroku app (this need to be unique)
     * Region - chooses a region that suits you
-    * APP_PUB_KEY - paste the GCIS public key you obtained earlier
-    * MAILCHIMP_API_KEY - paste the MailChimp API key you obtained earlier
-    * MAILCHIMP_LIST_NAME - provide a name for a new list in MailChimp which we will create for the integration (e.g. "Energise Me"), be aware this is also used as the organization name in the starter email template.
+    * APP_PUB_KEY           - paste the GCIS public key you obtained earlier
+    * MAILCHIMP_API_KEY     - paste the MailChimp API key you obtained earlier
+    * MAILCHIMP_LIST_NAME   - provide a name for a new list in MailChimp which we will create for the integration 
+                              (e.g. "Energise Me"), be aware this is also used as the organization name 
+                              in the starter email template.
+3.  Click on the button **Deploy app** and make sure there are no errors.
 
-Once the application is deployed you will be able to access the integration console at `https://(your-app-name).herokuapp.com/admin`.
+As we are simulating an external dataset that might come from a CRM you will need to add a record that will match with the test event you will send:
+
+4. Sign in to the integration console (you can find it at `https://(your-heroku-app-name).herokuapp.com/admin`) 
+   *  Username = `admin` and Password = `integrations-are-fun!`
+5. Under the section **Welcome Pack Orchestration** section, next to **Customers** click on **Add**
+6. On the **Add customer** page provide the following:
+   * Account ID    - provide a value that you will use in the test event (e.g. 12345678)
+   * First Name    - provide a value that will be used as the customer's first name
+   * Last Name     - provide a value that will be used as the customer's last name
+   * Email Address - provide a value that will receive the email
+6.  Click on **Save** 
+
+    **NOTE:**  You can add as many entires as needed.
 
 ## Configure the MailChimp campaign
 
@@ -70,32 +91,19 @@ Now that the integration is setup, it is time to wire up an automated campaign w
 
 **NOTE**: To preserve the drag-and-drop capability of email templates, you need to import templates using the share template functionality. MailChimp has an HTML import API but it appears to disable the use of the visual editor at the time of this writing.
 
-## Add a sample user to the integration layer CRM dataset
-
-As we are simulating an external dataset that might come from a CRM you will need to add a record that will match with the test event you will send:
-
-1. Sign in to the integration console (you can find it at `https://(your-app-name).herokuapp.com/admin`) 
-    *  Username = `admin` and Password = `integrations-are-fun!`
-2. Under the section **Welcome Pack Orchestration** section, next to **Customers** click on **Add**
-3. On the **Add customer** page provide the following and then click **Save**:
-    * Account ID - provide a value that you will use in the test event (e.g. 12345678)
-    * First Name - provide a value that will be used as the customer's first name
-    * Last Name - provide a value that will be used as the customer's last name
-    * Email Address - provide a value that will receive the email
-
-You can add as many entires as needed.
-
 ## Subscribe to the welcome event and send a test event
 
 Now that the integration layer and MailChimp are configured, it is time to connect the app you created earlier in the GCIS Developer Portal to the integration layer and send a test event:
 
+**NOTE:**  Contact your Organisation Administrator to add your domain name "(your-heroku-app-name).herokuapp.com" to the company's domain whitelist
+
 1. Sign in to the [GCIS Developer Portal](https://portal.integration.gentrack.cloud/)
-2. Under **Domain White List** click on **Add Domain** and enter your domain, example:  `(your-app-name).herokuapp.com`
-3. Under **My Apps** click on your app
-4. Under **App Settings** click on **Event Subscriptions**
-5. On the **Event Subscriptions** page click **Edit**, complete the following, then click **Save**:
-    * URL of your End Point: `https://(your-app-name).herokuapp.com/webhook/`
+2. Under **My Apps** click on your app
+3. Under **App Settings** click on **Event Subscriptions**
+4. On the **Event Subscriptions** page click **Edit**, complete the following:
+    * URL of your End Point: `https://(your-heroku-app-name).herokuapp.com/webhook/`
     * Select the **customer-welcome** event
+5.  Click on **Save**
 6. Once the event is subscribed, click the **Send Test Event** button
 7. In the **Send Test Event** dialog set the Account ID to the value you setup in the integration console earlier, then click **Send**
 
