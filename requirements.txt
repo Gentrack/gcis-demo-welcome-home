@@ -1,5 +1,5 @@
-Django==1.11.5
-pycryptodome==3.4.7
+Django>=1.11.18
+pycryptodome>=3.6.6
 mailchimp3==2.0.18
 psycopg2==2.7.3.1
 dj_database_url
