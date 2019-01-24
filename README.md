@@ -69,7 +69,7 @@ As we are simulating an external dataset that might come from a CRM you will nee
    * Email Address - provide a value that will receive the email
 6.  Click on **Save** 
 
-    **NOTE:**  You can add as many entires as needed.
+    **NOTE:**  You can add as many entries as needed.
 
 ## Configure the MailChimp campaign
 
